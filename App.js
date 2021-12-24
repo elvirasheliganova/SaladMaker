@@ -1,20 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
+import Navigation from './components/Navigation';
+import SaladItems from './components/SaladItems';
+import SaladMaker from './components/SaladMakerHeader';
+import SaladSummary from './components/SaladSummary';
 
-export default function App() {
+import { UserContextProvider } from './components/UserContext';
+
+export default function App()  {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <UserContextProvider >
+      <View style={styles.container}>
+        <Navigation />
+        <SaladMaker />
+        <SaladItems />
+        <SaladSummary />
+        <StatusBar style="auto" />
+      </View>
+    </UserContextProvider>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    width: '90%',
+    backgroundColor: 'pink',
+    alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
+    
   },
 });
